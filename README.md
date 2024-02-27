@@ -31,5 +31,5 @@ To run the script, simply navigate to the directory containing the script and ru
 
 'python splink.py'
 
-I have attached downloaded data in SplinkCsvData folder, it has different csv files for every keywords and final mergerd file as 'merged_csv_data.csv'
+I have attached downloaded data in SplinkCsvData folder, it has different csv files for every keywords and final mergerd file as 'merged_csv_data.csv' which has 19000 rows of data.
 

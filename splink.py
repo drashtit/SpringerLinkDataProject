@@ -62,9 +62,6 @@ for keyword in my_keys:
     search_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="search"]')))
     search_button.click()
 
-    # Wait to ensure the page has loaded and the checkbox is clickable
-    time.sleep(3)  # Consider replacing with a more reliable wait condition
-
     time.sleep(3)  # Consider replacing with a more reliable wait condition
     download_button = driver.find_element(By.XPATH, '//*[@id="tool-download"]/img')
     download_button.click()

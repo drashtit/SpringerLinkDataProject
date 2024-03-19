@@ -8,7 +8,7 @@ from selenium.common.exceptions import TimeoutException, NoSuchElementException
 import time
 
 # Specify the path to your desired download folder
-download_folder = "/Users/drashtithummar/PycharmProjects/SpringerLink/ArticlePdf"
+download_folder = "/Users/drashtithummar/PycharmProjects/SpringerLink/SpeechLanguagePathologist"
 
 options = webdriver.ChromeOptions()
 options.add_experimental_option("detach", True)
@@ -19,7 +19,6 @@ options.add_experimental_option('prefs', {
     "download.prompt_for_download": False,  # Disable download prompt
     "plugins.always_open_pdf_externally": True  # It will not show PDF directly in chrome
 })
-
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 wait = WebDriverWait(driver, 10)  # Setting up an explicit wait
@@ -46,8 +45,8 @@ preview_only.click()
 type_article_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//span[@class="facet-title" and text()="Article"]')))
 type_article_btn.click()
 
-my_keys = ["speech language therapy", "speech language disorder", "speech sound disorder", "articulation disorder", "speech intervention", "language intervention", "Auditory Discrimination", "Auditory Processing Disorder", "Phonological Awareness", "Phonological Processes", "Auditory Perception","Babbling", "Motor Speech Disorder", "Fluency", "Morpheme","Phonology", "Stuttering", "Language Impairment", "Speech-language Pathologist"]
-# my_keys = ["speech language disorder"]
+# my_keys = ["speech language therapy", "speech language disorder", "speech sound disorder", "articulation disorder", "speech intervention", "language intervention", "Auditory Discrimination", "Auditory Processing Disorder", "Phonological Awareness", "Phonological Processes", "Auditory Perception","Babbling", "Motor Speech Disorder", "Fluency", "Morpheme","Phonology", "Stuttering", "Language Impairment", "Speech-language Pathologist"]
+my_keys = ["Speech-language Pathologist"]
 
 for keyword in my_keys:
     search_box = wait.until(EC.visibility_of_element_located((By.XPATH, '//input[@name="query"]')))
@@ -65,7 +64,7 @@ for keyword in my_keys:
             try:
                 article_link = article.find_element(By.XPATH, './/a[@class="title"]')  # Adjusted to './/a[@class="title"]' for a more reliable match
                 link = article_link.get_attribute('href')
-                print(link)
+                # print(link)
 
                 # Open the article link in a new window
                 driver.execute_script(f"window.open('{link}');")
@@ -74,7 +73,7 @@ for keyword in my_keys:
 
                 download_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//div[@class="c-pdf-download u-clear-both u-mb-16"]/a')))
                 download_button.click()
-                time.sleep(5)  # Adjust based on your connection speed and response time
+                time.sleep(3)  # Adjust based on your connection speed and response time
 
                 driver.close()
                 driver.switch_to.window(original_window)
